@@ -14,14 +14,16 @@ pipeline {
       steps {
         script {
           dir("webapp") {
-            dockerImage = docker.build "${env.ARTIFACT_ID}"
+            dockerImage = docker.build("${env.ARTIFACT_ID}")
           }
         }
       }
     }
     stage('Run tests') {
       steps {
-        sh "docker run ${dockerImage.id} npm test"
+        script {
+          sh "docker run ${dockerImage.id} npm test"
+        }
       }
     }
     stage('Publish') {
