@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools {
-    nodejs 'node-23.5.0'
+    nodejs '23.5.0' // Corrected Node.js installation name
   }
 
   options {
